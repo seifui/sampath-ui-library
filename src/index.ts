@@ -1,12 +1,10 @@
-// Import styles (consumers will import from './styles')
-import './styles/globals.css';
+// Export all Subframe UI components
+export * from './ui';
 
-// Export placeholder component
+// Export placeholder component (optional - can be removed if not needed)
 export { Placeholder } from './components/Placeholder';
 export type { PlaceholderProps } from './components/Placeholder';
 
-// Export components will be added here after Subframe sync
-// Example:
-// export { Button } from './ui/Button';
-// export { Card } from './ui/Card';
+// Note: Styles should be imported separately by consumers:
+// import 'subframe-ui-library/styles';
 
