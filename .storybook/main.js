@@ -4,6 +4,9 @@ const config = {
   addons: [
     '@storybook/addon-essentials',
   ],
+  // Set base path for GitHub Pages deployment
+  // If STORYBOOK_BASE_PATH environment variable is set, use it; otherwise use empty string (root)
+  base: process.env.STORYBOOK_BASE_PATH || '',
   framework: {
     name: '@storybook/react-webpack5',
     options: {},

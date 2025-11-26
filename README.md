@@ -207,6 +207,44 @@ Build static Storybook:
 npm run build-storybook
 ```
 
+### Deploy Storybook to GitHub Pages
+
+The project includes a GitHub Actions workflow to automatically deploy Storybook to GitHub Pages.
+
+#### Setup Steps:
+
+1. **Enable GitHub Pages in Repository Settings:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **"GitHub Actions"** (not "Deploy from a branch")
+   - This allows the workflow to deploy your site
+
+2. **Set Workflow Permissions:**
+   - Go to **Settings** → **Actions** → **General**
+   - Scroll to **"Workflow permissions"**
+   - Select **"Read and write permissions"**
+   - Click **Save**
+
+3. **Push to Main Branch:**
+   - Push the workflow file (`.github/workflows/deploy-storybook.yml`) to your repository
+   - The workflow will automatically run on push to `main` or `master` branch
+   - After successful build, your Storybook will be available at:
+     - `https://<username>.github.io/<repository-name>/`
+     - Or `https://<username>.github.io/` if your repository is named `username.github.io`
+
+#### Base Path Configuration:
+
+- For repositories named `username.github.io`: The base path is automatically set to root (`/`)
+- For other repositories: The base path is set to `/repository-name`
+- To customize the base path, edit the `STORYBOOK_BASE_PATH` environment variable in `.github/workflows/deploy-storybook.yml`
+
+#### Manual Deployment:
+
+You can also trigger the workflow manually:
+- Go to **Actions** tab in your repository
+- Select **"Deploy Storybook to GitHub Pages"** workflow
+- Click **"Run workflow"** → **"Run workflow"**
+
 ### Watch Mode
 
 For development with auto-rebuild:
