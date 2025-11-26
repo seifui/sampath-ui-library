@@ -1,0 +1,70 @@
+{
+  "name": "subframe-ui-library",
+  "version": "0.1.0",
+  "description": "A UI component library built with Subframe UI, Tailwind CSS 4, and Next.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles": "./dist/styles/globals.css"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "sync:subframe": "subframe sync --all"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "subframe",
+    "ui",
+    "components",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "next": ">=13.0.0"
+  },
+  "dependencies": {
+    "@subframe/core": "latest"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/builder-webpack5": "^8.6.14",
+    "@storybook/preset-react-webpack": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-webpack5": "^8.6.14",
+    "@subframe/cli": "^1.194.0",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.17",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "sideEffects": false
+}
