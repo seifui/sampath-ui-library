@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Subframe UI Library
 
 A production-ready UI component library built with Subframe UI, Tailwind CSS 4, and optimized for Next.js projects with TypeScript/TSX support.
@@ -313,4 +314,3 @@ MIT
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
