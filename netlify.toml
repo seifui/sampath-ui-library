@@ -1,0 +1,17 @@
+[build]
+  # Build command to install dependencies and build Storybook
+  command = "npm ci && npm run build-storybook"
+  
+  # Directory where Storybook builds the static site
+  publish = "storybook-static"
+
+# Node.js version for Netlify build environment
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect rules (optional - for SPA routing if needed)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
