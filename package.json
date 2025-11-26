@@ -26,6 +26,9 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "sync:subframe": "subframe sync --all"
