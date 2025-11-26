@@ -8,6 +8,9 @@
 # Node.js version for Netlify build environment
 [build.environment]
   NODE_VERSION = "18"
+  # Disable Next.js plugin since we're deploying Storybook, not Next.js
+  # This prevents Netlify from auto-detecting and using the Next.js plugin
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # Redirect rules (optional - for SPA routing if needed)
 [[redirects]]
