@@ -44,7 +44,7 @@ const ProgressRoot = React.forwardRef<HTMLDivElement, ProgressRootProps>(
       <SubframeCore.Progress.Root asChild={true} value={value} {...otherProps}>
         <div
           className={SubframeUtils.twClassNames(
-            "flex w-full flex-col items-start gap-2 overflow-hidden rounded-full bg-neutral-100",
+            "flex h-2 w-full flex-col items-start gap-2 overflow-hidden rounded-full bg-neutral-100",
             className
           )}
           ref={ref}

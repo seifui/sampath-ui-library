@@ -28,6 +28,7 @@
       ]
     },
     "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "plugins": [
       {
         "name": "next"

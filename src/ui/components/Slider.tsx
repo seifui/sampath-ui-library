@@ -70,7 +70,7 @@ const Track = React.forwardRef<HTMLDivElement, TrackProps>(function Track(
         )}
         ref={ref}
       >
-        <Slider.Range />
+        <Range />
       </div>
     </SubframeCore.Slider.Track>
   );
@@ -79,8 +79,12 @@ const Track = React.forwardRef<HTMLDivElement, TrackProps>(function Track(
 interface SliderRootProps
   extends React.ComponentProps<typeof SubframeCore.Slider.Root> {
   value?: number[];
+  defaultValue?: number[];
   onValueChange?: (value: number[]) => void;
   onValueCommit?: (value: number[]) => void;
+  min?: number;
+  max?: number;
+  step?: number;
   className?: string;
 }
 

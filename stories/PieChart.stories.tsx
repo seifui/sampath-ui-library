@@ -14,6 +14,16 @@ export default meta;
 type Story = StoryObj<typeof PieChart>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    category: 'value',
+    index: 'name',
+    data: [
+      { name: 'Category A', value: 30 },
+      { name: 'Category B', value: 25 },
+      { name: 'Category C', value: 20 },
+      { name: 'Category D', value: 15 },
+      { name: 'Category E', value: 10 },
+    ],
+  },
 };
 

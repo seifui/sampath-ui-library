@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Subframe UI Library
 
 A production-ready UI component library built with Subframe UI, Tailwind CSS 4, and optimized for Next.js projects with TypeScript/TSX support.
@@ -17,82 +16,96 @@ A production-ready UI component library built with Subframe UI, Tailwind CSS 4, 
 ### In Your Next.js Project
 
 ```bash
-npm install subframe-ui-library
+npm install sief-ds1
 # or
-yarn add subframe-ui-library
+yarn add sief-ds1
 # or
-pnpm add subframe-ui-library
+pnpm add sief-ds1
 ```
 
 ## Setup for Next.js Projects
 
 ### 1. Install Peer Dependencies
 
-Make sure you have React and React-DOM installed:
+Install the required peer dependencies:
 
 ```bash
-npm install react react-dom
+npm install react react-dom next tailwindcss@^4
 ```
 
 ### 2. Configure Tailwind CSS 4
 
-This package uses Tailwind CSS 4. In your Next.js project, ensure you have Tailwind CSS 4 configured.
+This package uses Tailwind CSS 4 with CSS-based configuration. In your Next.js project:
 
-#### Install Tailwind CSS 4
+#### Install Tailwind CSS 4 and PostCSS
 
 ```bash
-npm install -D tailwindcss@^4 postcss autoprefixer
+npm install -D tailwindcss@^4 @tailwindcss/postcss postcss autoprefixer
 ```
 
-#### Configure `tailwind.config.ts`
+#### Configure PostCSS
 
-Update your `tailwind.config.ts` to include the package's content:
-
-```typescript
-import type { Config } from 'tailwindcss';
-
-const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/subframe-ui-library/**/*.{js,ts,jsx,tsx}', // Add this line
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-
-export default config;
-```
-
-#### Import Styles
-
-In your Next.js app, import the package styles. For **App Router**, add to your `app/globals.css` or `app/layout.tsx`:
-
-```css
-@import "tailwindcss";
-@import "subframe-ui-library/styles";
-```
-
-For **Pages Router**, add to your `pages/_app.tsx`:
-
-```tsx
-import 'subframe-ui-library/styles';
-```
-
-### 3. Configure PostCSS
-
-Ensure your `postcss.config.js` includes Tailwind and Autoprefixer:
+Create or update your `postcss.config.js`:
 
 ```javascript
 module.exports = {
   plugins: {
-    tailwindcss: {},
+    '@tailwindcss/postcss': {},
     autoprefixer: {},
   },
 };
+```
+
+#### Import Styles
+
+**IMPORTANT**: You must import Tailwind CSS first, then the package styles.
+
+**For App Router** (Next.js 13+), add to your `app/globals.css`:
+
+```css
+@import "tailwindcss";
+@import "sief-ds1/styles";
+```
+
+Or import in your `app/layout.tsx` (make sure Tailwind is imported first in your CSS):
+
+```tsx
+import 'sief-ds1/styles';
+```
+
+**For Pages Router**, add to your `pages/_app.tsx`:
+
+```tsx
+import 'sief-ds1/styles';
+```
+
+**Alternative: Import with explicit .css extension** (if the above doesn't work):
+
+```css
+@import "tailwindcss";
+@import "sief-ds1/styles.css";
+```
+
+Or in your layout file:
+
+```tsx
+import 'sief-ds1/styles.css';
+```
+
+#### Optional: Import Theme Only
+
+If you want to use the theme with your own Tailwind setup:
+
+```css
+@import "tailwindcss";
+@import "sief-ds1/styles/theme";
+```
+
+Or with explicit extension:
+
+```css
+@import "tailwindcss";
+@import "sief-ds1/styles/theme.css";
 ```
 
 ## Usage
@@ -100,7 +113,7 @@ module.exports = {
 ### Import Components
 
 ```tsx
-import { Placeholder } from 'subframe-ui-library';
+import { Placeholder } from 'sief-ds1';
 
 export default function MyPage() {
   return (
@@ -116,7 +129,7 @@ export default function MyPage() {
 Once you sync your Subframe components (see Development section), you can import them:
 
 ```tsx
-import { Button, Card, Input } from 'subframe-ui-library';
+import { Button, Card, Input } from 'sief-ds1';
 
 export default function MyPage() {
   return (
@@ -142,7 +155,7 @@ export default function MyPage() {
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd subframe-ui-library
+cd sief-ds1-ui
 ```
 
 2. Install dependencies:
@@ -173,11 +186,7 @@ export { Card } from './ui/Card';
 // ... other components
 ```
 
-4. Update `src/styles/globals.css` to import Subframe theme (for Tailwind v4):
-```css
-@import "tailwindcss";
-@import "../ui/theme.css";
-```
+4. The theme is already configured in `src/ui/theme.css` using Tailwind 4's `@theme` directive. The build process automatically includes it in the package exports.
 
 ### Build
 
@@ -191,7 +200,8 @@ This will create the `dist` folder with:
 - `index.js` (CommonJS)
 - `index.mjs` (ES Modules)
 - `index.d.ts` (TypeScript definitions)
-- `styles/globals.css` (CSS styles)
+- `styles/globals.css` (Complete CSS with Tailwind + theme)
+- `styles/theme.css` (Theme only for custom imports)
 
 ### Storybook
 
@@ -332,7 +342,7 @@ npm pack
 
 This creates a `.tgz` file you can install in a test project:
 ```bash
-npm install /path/to/subframe-ui-library-0.1.0.tgz
+npm install /path/to/sief-ds1-0.1.1.tgz
 ```
 
 ### Publish to npm
@@ -355,7 +365,7 @@ npm publish --access public
 ## Project Structure
 
 ```
-subframe-ui-library/
+sief-ds1-ui/
 ├── src/
 │   ├── components/          # Custom components
 │   ├── ui/                  # Subframe synced components
@@ -367,7 +377,6 @@ subframe-ui-library/
 ├── .subframe/              # Subframe sync config
 ├── package.json
 ├── tsconfig.json
-├── tailwind.config.ts
 ├── postcss.config.js
 └── tsup.config.ts
 ```
@@ -376,20 +385,42 @@ subframe-ui-library/
 
 When using this package in a Next.js project, ensure:
 
-1. **Tailwind CSS 4** is installed and configured
-2. **PostCSS** is configured with Tailwind and Autoprefixer
+1. **Tailwind CSS 4** is installed (`tailwindcss@^4`)
+2. **PostCSS** is configured with `@tailwindcss/postcss` plugin
 3. **React 18+** or **React 19+** is installed
 4. **Next.js 13+** is installed (for App Router support)
-5. Package styles are imported in your app's global CSS file
-6. Tailwind config includes the package's content paths
+5. Package styles are imported in your app's global CSS file (`app/globals.css` or `pages/_app.tsx`)
+
+**Note**: This package uses Tailwind 4's CSS-based configuration. No `tailwind.config.ts` is needed for the package itself - the theme is defined in CSS using the `@theme` directive.
 
 ## Troubleshooting
 
 ### Styles not applying
 
-- Ensure you've imported the package styles in your app
-- Verify Tailwind config includes the package in `content` paths
-- Check that PostCSS is properly configured
+**Common Issues and Solutions:**
+
+1. **CSS not loading from npm package:**
+   - Ensure you've imported Tailwind CSS FIRST in your `app/globals.css`:
+     ```css
+     @import "tailwindcss";
+     @import "sief-ds1/styles";
+     ```
+   - Try using the explicit `.css` extension: `@import "sief-ds1/styles.css"`
+   - Verify PostCSS is configured with `@tailwindcss/postcss` plugin (not `tailwindcss`)
+   - Check that Tailwind CSS 4 is installed: `npm list tailwindcss`
+
+2. **Import order matters:**
+   - Tailwind CSS import must come BEFORE the package styles
+   - Ensure your `app/globals.css` or `pages/_app.tsx` imports in this order:
+     1. `@import "tailwindcss";`
+     2. `@import "sief-ds1/styles";`
+     3. Your own custom styles
+
+3. **If styles still don't work:**
+   - Clear Next.js cache: `rm -rf .next`
+   - Restart your dev server
+   - Verify the package version: `npm list sief-ds1` (should be 0.1.2 or later)
+   - Check browser console for CSS loading errors
 
 ### TypeScript errors
 

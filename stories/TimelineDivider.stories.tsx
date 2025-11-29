@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { TimelineDivider } from '../src/ui/components/TimelineDivider';
 
 const meta: Meta<typeof TimelineDivider> = {
@@ -14,6 +15,10 @@ export default meta;
 type Story = StoryObj<typeof TimelineDivider>;
 
 export const Default: Story = {
-  args: {},
+  render: () => (
+    <div className="w-full max-w-md">
+      <TimelineDivider>Yesterday</TimelineDivider>
+    </div>
+  ),
 };
 
